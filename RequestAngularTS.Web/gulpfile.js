@@ -90,10 +90,19 @@ gulp.task('styles-deploy', function () {
                .pipe(gulp.dest('dist/css'));
 });
 
-//basically just keeping an eye on all HTML files
+//Watch HTML files
 gulp.task('html', function () {
     //watch any and all HTML files and refresh when something changes
     return gulp.src('app/*.html')
+        .pipe(connect.reload())
+       //catch errors
+       .on('error', gutil.log);
+});
+
+//Watch JavaScript files
+gulp.task('scripts', function () {
+    //watch any and all HTML files and refresh when something changes
+    return gulp.src('app/*.js')
         .pipe(connect.reload())
        //catch errors
        .on('error', gutil.log);
@@ -120,6 +129,7 @@ var tsProjectDeploy = ts.createProject({
 var tsProjectMode = tsProject;
 
 function typescripts() {
+    gutil.log("starting typescripts function");
     return gulp.src(['app/**/*.ts'])
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
@@ -135,10 +145,13 @@ function typescripts() {
 }
 
 gulp.task('typescripts', function () {
-    return typescripts();
+    // For some reason, not returning the pipe takes less time than if the pipe is returned, for a small project at least.
+    // Need to keep experimenting.
+    typescripts();
 });
 
 function typescriptsmin() {
+    gutil.log("starting typescriptsmin function");
     return gulp.src(['app/**/*.ts'])
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
@@ -158,7 +171,7 @@ function typescriptsmin() {
 }
 
 gulp.task('typescripts-min', function () {
-    return typescriptsmin();
+    typescriptsmin();
 });
 
 gulp.task('typescripts-deploy', function () {
