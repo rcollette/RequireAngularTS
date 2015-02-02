@@ -4,8 +4,12 @@
 #RCollette customization
 dist/
 app/*.js
-!*.spec.js
+app/*.js.map
 css/
+typings/
+!typings/tsd.d.ts
+node_modules/
+app/components/
 
 # User-specific files
 *.suo
