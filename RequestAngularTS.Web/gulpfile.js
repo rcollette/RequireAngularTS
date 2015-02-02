@@ -152,7 +152,7 @@ gulp.task('typescripts', function () {
 
 function typescriptsmin() {
     gutil.log("starting typescriptsmin function");
-    return gulp.src(['app/**/*.ts'])
+    return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts/'])
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
@@ -163,9 +163,9 @@ function typescriptsmin() {
             gulpWarnings: false //typescript removes base path for some reason.  Warnings result that we don't want to see.
         }))
         .pipe(uglify())
-        .pipe(rename(function (path) {
-            path.extname = ".min.js";
-        }))
+        //.pipe(rename(function (path) {
+        //    path.extname = ".min.js";
+        //}))
         .pipe(sourcemaps.write('.', { includeContent: false }))
         .pipe(gulp.dest('app'));
 }
