@@ -1,9 +1,8 @@
-﻿'use strict';
-export class PurchaseOrderController {
+﻿export class PurchaseOrderController {
     public somePublicProperty: string;
 
-    /*@ngInject*/
     constructor($scope: any) {
         this.somePublicProperty = "googlex";
     }
-} 
+}
+angular.module("app.PurchaseOrder").controller('PurchaseOrder', PurchaseOrderController);

@@ -15,7 +15,7 @@
     <RootNamespace>RequestAngularTS.Web</RootNamespace>
     <AssemblyName>RequestAngularTS.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -59,6 +59,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="app\lib\simplesidebar\index.html" />
+    <Content Include="app\lib\simplesidebar\simple-sidebar.css" />
+    <Content Include="app\modules\PurchaseOrder\PurchaseOrders.html" />
     <Content Include="gulpfile.js" />
     <Content Include="app\index.html" />
   </ItemGroup>
@@ -91,15 +95,16 @@
     <Folder Include="app\fonts\" />
     <Folder Include="app\images\" />
     <Folder Include="app\layout\shell\" />
-    <Folder Include="app\lib\" />
-    <Folder Include="app\scss\" />
-    <Folder Include="app\services\" />
-    <Folder Include="app\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\modules\App\App.module.ts" />
+    <TypeScriptCompile Include="app\modules\App\App.routes.ts" />
     <TypeScriptCompile Include="app\dataAccessServices\PurchaseOrder.service.ts" />
+    <TypeScriptCompile Include="app\modules\App\App.controller.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrders.controller.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.controller.ts" />
+    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.module.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.spec.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -126,7 +131,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:14633/</IISUrl>
+          <IISUrl>http://localhost/RequestAngularTS.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

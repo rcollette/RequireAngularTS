@@ -1,10 +1,10 @@
 //initialize all of our variables
 var concat,
     gulp, gutil,
-    sass, uglify, cache, minifyCSS,
+    sass, uglify, minifyCSS,
     del, connect, autoprefixer, ts, sourcemaps,
     ngAnnotate, rename, watch, plumber,
-    addsrc, autoPrefixBrowserList;
+    addsrc, autoPrefixBrowserList,cached;
 
 autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 
@@ -13,7 +13,6 @@ gutil = require('gulp-util');
 concat = require('gulp-concat');
 uglify = require('gulp-uglify');
 sass = require('gulp-sass');
-cache = require('gulp-cache');
 minifyCSS = require('gulp-minify-css');
 connect = require('gulp-connect');
 del = require('del');
@@ -25,8 +24,10 @@ rename = require('gulp-rename');
 plumber = require('gulp-plumber');
 watch = require('gulp-watch');
 addsrc = require('gulp-add-src');
+cached = require('gulp-cached');
 
 gulp.task('connect', function () {
+    return;
     connect.server({
         root: 'app',
         livereload: true
@@ -66,7 +67,7 @@ gulp.task('styles', function () {
                //where to save our final, compressed css file
                .pipe(gulp.dest('app/css'))
                //notify LiveReload to refresh
-               .pipe(connect.reload());
+               //.pipe(connect.reload());
 });
 
 //compiling our SCSS files for deployment
@@ -94,7 +95,7 @@ gulp.task('styles-deploy', function () {
 gulp.task('html', function () {
     //watch any and all HTML files and refresh when something changes
     return gulp.src('app/*.html')
-        .pipe(connect.reload())
+        //.pipe(connect.reload())
        //catch errors
        .on('error', gutil.log);
 });
@@ -103,7 +104,7 @@ gulp.task('html', function () {
 gulp.task('scripts', function () {
     //watch any and all HTML files and refresh when something changes
     return gulp.src('app/*.js')
-        .pipe(connect.reload())
+        //.pipe(connect.reload())
        //catch errors
        .on('error', gutil.log);
 });
@@ -129,8 +130,8 @@ var tsProjectDeploy = ts.createProject({
 var tsProjectMode = tsProject;
 
 function typescripts() {
-    gutil.log("starting typescripts function");
     return gulp.src(['app/**/*.ts'])
+        .pipe(cached('typescripts'))
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
@@ -151,8 +152,9 @@ gulp.task('typescripts', function () {
 });
 
 function typescriptsmin() {
-    gutil.log("starting typescriptsmin function");
-    return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts/'])
+    // todo: spec.ts not being excluded from min
+    return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts'])
+        .pipe(cached('typescriptsmin'))
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
@@ -163,9 +165,9 @@ function typescriptsmin() {
             gulpWarnings: false //typescript removes base path for some reason.  Warnings result that we don't want to see.
         }))
         .pipe(uglify())
-        //.pipe(rename(function (path) {
-        //    path.extname = ".min.js";
-        //}))
+        .pipe(rename(function (path) {
+            path.extname = ".min.js";
+        }))
         .pipe(sourcemaps.write('.', { includeContent: false }))
         .pipe(gulp.dest('app'));
 }
@@ -206,7 +208,7 @@ gulp.task('clean', function () {
 gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts', 'styles'], function () {
     //a list of watchers, so it will watch all of the following files waiting for changes
     gulp.watch('app/**/*.ts', ['typescripts', 'typescripts-min']);
-    gulp.watch('app/**/*.js', ['scripts']);
+    //gulp.watch('app/**/*.js', ['scripts']);
     gulp.watch('app/scss/**', ['styles']);
     //gulp.watch('app/images/**', ['images']);
     gulp.watch('app/*.html', ['html'])

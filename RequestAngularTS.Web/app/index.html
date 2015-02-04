@@ -1,8 +1,40 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en" data-ng-cloak="">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>{{vm.title}}</title>
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/simplesidebar/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Navigation
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Purchase Orders</a>
+                </li>
+                <li>
+                    <a href="#">Vendors</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div id="mainView" data-ng-view="" data-ng-click="master.hideMenu()" class="">Empty View</div>
+        </div>
+    </div>
+    <script src="components/requirejs/require.js" data-main="main.js"></script>
 </body>
 </html>

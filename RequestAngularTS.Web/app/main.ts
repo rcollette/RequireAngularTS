@@ -2,15 +2,17 @@
 (function () {
     require.config({
         paths: {
-            app: "app.min",
             angular: "components/angular/angular.min",
-            angularRoutes: "components/angular/angular-route.min",
-            angularAnimate: "components/angular/angular-animate.min",
-            angularResource: "components/angular/angular-resource.min",
+            angularRoutes: "components/angular-route/angular-route.min",
+            angularAnimate: "components/angular-animate/angular-animate.min",
+            angularResource: "components/angular-resource/angular-resource.min",
             jquery: "components/jquery/dist/jquery.min",
             bootstrap: "components/bootstrap/dist/js/bootstrap.min",
             angularToastr: "components/angular-toastr/dist/angular-toastr.min",
-            moment: "components/moment/min/moment.min"
+            moment: "components/moment/min/moment.min",
+            appModule: "modules/App/App.module",
+            appRoutes: "modules/App/App.routes",
+            appController: "modules/App/App.controller"
         },
         shim: {
             angular: { exports: "angular", deps: ["jquery"] },
@@ -22,7 +24,9 @@
             angularToastr: { deps: ["angular", "angularAnimate", "jquery"] },
             bootstrap: { deps: ["jquery"] },
             moment: { deps: ["jquery"] },
-            app: { deps: ["angular", "angularRoutes", "angularAnimate"] }
+            appModule: { deps: ["angular", "angularRoutes", "angularAnimate"] },
+            appRoutes: { deps: ['appModule'] },
+            appController: { deps: ['appRoutes'] }
         },
         priority: [
             "angular"
@@ -35,16 +39,15 @@
         "angularRoutes",
         "angularAnimate",
         "angularResource",
-        "app",
-        "appRoutes",
+        "appController",
         "angularToastr",
         "bootstrap",
-        "moment",
-        "controllers/MasterController",
+        "moment"
+        // todo add app controller"",
     ], function (angular: any) {
             $(document).ready(function () {
                 var $html = $("html");
-                angular.bootstrap($html, ["app"], { "strictDi": true });
+                angular.bootstrap($html, ["app"], { "strictDi": false });
 
                 // more info: https://groups.google.com/forum/#!msg/angular/yslVnZh9Yjk/MLi3VGXZLeMJ
                 $html.addClass("ng-app");
