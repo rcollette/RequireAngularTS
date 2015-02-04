@@ -2,8 +2,8 @@
 (function () {
     require.config({
         paths: {
-            angular: "components/angular/angular.min",
-            angularRoutes: "components/angular-route/angular-route.min",
+            angular: "components/angular/angular",
+            angularRoutes: "components/angular-route/angular-route",
             angularAnimate: "components/angular-animate/angular-animate.min",
             angularResource: "components/angular-resource/angular-resource.min",
             jquery: "components/jquery/dist/jquery.min",
@@ -42,7 +42,8 @@
         "appController",
         "angularToastr",
         "bootstrap",
-        "moment"
+        "moment",
+        "modules/PurchaseOrder/PurchaseOrder.module"
         // todo add app controller"",
     ], function (angular: any) {
             $(document).ready(function () {

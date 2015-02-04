@@ -4,7 +4,8 @@ var concat,
     sass, uglify, minifyCSS,
     del, connect, autoprefixer, ts, sourcemaps,
     ngAnnotate, rename, watch, plumber,
-    addsrc, autoPrefixBrowserList,cached;
+    addsrc, autoPrefixBrowserList, cached,
+    gulpIgnore;
 
 autoPrefixBrowserList = ['last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
 
@@ -25,6 +26,7 @@ plumber = require('gulp-plumber');
 watch = require('gulp-watch');
 addsrc = require('gulp-add-src');
 cached = require('gulp-cached');
+gulpIgnore = require('gulp-ignore');
 
 gulp.task('connect', function () {
     return;
@@ -66,8 +68,8 @@ gulp.task('styles', function () {
                .pipe(concat('styles.css'))
                //where to save our final, compressed css file
                .pipe(gulp.dest('app/css'))
-               //notify LiveReload to refresh
-               //.pipe(connect.reload());
+    //notify LiveReload to refresh
+    //.pipe(connect.reload());
 });
 
 //compiling our SCSS files for deployment
@@ -136,6 +138,7 @@ function typescripts() {
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
         .pipe(ts(tsProjectMode, undefined, ts.reporter.fullReporter(true))).js
+        .pipe(gulpIgnore.exclude('./*.I.ts'))
         .pipe(ngAnnotate({
             remove: false,
             add: true,
@@ -153,12 +156,13 @@ gulp.task('typescripts', function () {
 
 function typescriptsmin() {
     // todo: spec.ts not being excluded from min
-    return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts'])
+    return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts', 'app/**/*.I.ts/'])
         .pipe(cached('typescriptsmin'))
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
         .pipe(ts(tsProjectMode, undefined, ts.reporter.fullReporter(true))).js
+        .pipe(gulpIgnore.exclude('./*.I.ts'))
         .pipe(ngAnnotate({
             remove: false,
             add: true,
@@ -207,6 +211,8 @@ gulp.task('clean', function () {
 
 gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts', 'styles'], function () {
     //a list of watchers, so it will watch all of the following files waiting for changes
+
+    // todo: for some reason watch is not picking up new or copy pasted files.  Is this a visual studio thing?
     gulp.watch('app/**/*.ts', ['typescripts', 'typescripts-min']);
     //gulp.watch('app/**/*.js', ['scripts']);
     gulp.watch('app/scss/**', ['styles']);
