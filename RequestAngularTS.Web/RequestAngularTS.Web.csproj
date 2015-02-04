@@ -63,6 +63,7 @@
     <Content Include="app\lib\simplesidebar\index.html" />
     <Content Include="app\lib\simplesidebar\simple-sidebar.css" />
     <Content Include="app\modules\PurchaseOrder\PurchaseOrders.html" />
+    <Content Include="app\modules\Vendor\Vendors.html" />
     <Content Include="gulpfile.js" />
     <Content Include="app\index.html" />
   </ItemGroup>
@@ -94,18 +95,20 @@
     <Folder Include="app\directives\" />
     <Folder Include="app\fonts\" />
     <Folder Include="app\images\" />
-    <Folder Include="app\layout\shell\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\interfaces\PagebleT.I.ts" />
+    <TypeScriptCompile Include="app\interfaces\FeatureController.I.ts" />
     <TypeScriptCompile Include="app\modules\App\App.module.ts" />
     <TypeScriptCompile Include="app\modules\App\App.routes.ts" />
     <TypeScriptCompile Include="app\dataAccessServices\PurchaseOrder.service.ts" />
     <TypeScriptCompile Include="app\modules\App\App.controller.ts" />
     <TypeScriptCompile Include="app\main.ts" />
-    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrders.controller.ts" />
-    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.controller.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.module.ts" />
-    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.spec.ts" />
+    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrders.controller.ts" />
+    <TypeScriptCompile Include="app\modules\Vendor\Vendor.module.ts" />
+    <TypeScriptCompile Include="app\modules\Vendor\Vendors.controller.ts" />
+    <TypeScriptCompile Include="app\modules\Vendor\Vendor.spec.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </TypeScriptCompile>
