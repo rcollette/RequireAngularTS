@@ -20,15 +20,6 @@
 
     angular.module("app").config(["$routeProvider", function ($routeProvider: ng.route.IRouteProvider) {
         $routeProvider
-            .when("/PurchaseOrders",
-            {
-                routeName: "PurchaseOrders",
-                pathTitle: "Purchase Orders",
-                controller: "purchaseOrdersController",
-                templateUrl: "modules/PurchaseOrder/PurchaseOrders.html",
-                controllerAs: "vm",
-                resolve: resolve(["modules/PurchaseOrder/PurchaseOrders.controller"]) //Return a promise that loads the controller using requirejs
-            })
             .when("/PurhaseOrders/:id",
             {
                 routeName: "PurchaseOrder",
@@ -37,6 +28,16 @@
                 templateUrl: "modules/PurchaseOrder/PurchaseOrder.html",
                 controllerAs: "vm",
                 resolve: resolve(["modules/PurchaseOrder/PurchaseOrders.controller"])
+            })
+            .when("/PurchaseOrders",
+            {
+                
+                routeName: "PurchaseOrders",
+                pathTitle: "Purchase Orders",
+                controller: "purchaseOrdersController",
+                templateUrl: "modules/PurchaseOrder/PurchaseOrders.html",
+                controllerAs: "vm",
+                resolve: resolve(["modules/PurchaseOrder/PurchaseOrders.controller"]) //Return a promise that loads the controller using requirejs
             })
             .when("/Vendors",
             {
