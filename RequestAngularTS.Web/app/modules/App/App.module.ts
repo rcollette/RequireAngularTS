@@ -2,7 +2,7 @@
 //appPurchaseOrder;//If you don't use anything from the imported module, typescript will not generate the needed requires statement.
 
 //It seems the app module must be exported so that the properties we are using to capture do not "go away"
-export var app: any = angular.module('app', [
+var app: any = angular.module('app', [
     'ngRoute',
     'ngAnimate',
     'ngResource',
@@ -13,9 +13,11 @@ export var app: any = angular.module('app', [
 //with this module.
 export var injector: ng.auto.IInjectorService
 
-// todo: Attempt to turn this into a function where an array of module handles is exported.
-
-app.config(function ($routeProvider: ng.route.IRouteProvider, $controllerProvider: ng.IControllerProvider, $provide: ng.auto.IProvideService, $compileProvider: ng.ICompileProvider) {
+app.config(function (
+    $routeProvider: ng.route.IRouteProvider,
+    $controllerProvider: ng.IControllerProvider,
+    $provide: ng.auto.IProvideService,
+    $compileProvider: ng.ICompileProvider) {
     // keep global reference to providers so that we can implement dynamic loading of controllers.
     // see: http://ify.io/lazy-loading-in-angularjs/
     // see: http://www.bennadel.com/blog/2553-Loading-AngularJS-Components-After-Your-Application-Has-Been-Bootstrapped.htm

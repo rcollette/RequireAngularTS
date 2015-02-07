@@ -6,8 +6,6 @@ class PurchaseOrdersController implements IFeatureController {
     private purchaseOrderService: poService.PurchaseOrdersService;
 
     constructor($scope: any, purchaseOrderService: poService.PurchaseOrdersService) {
-        //purchaseOrderService = <poService.PurchaseOrderService> appModule.app.injector.get("purchaseOrderService");
-        //purchaseOrderService = <poService.PurchaseOrderService> angular.injector().get("purchaseOrderService");
         this.purchaseOrders = purchaseOrderService.fetchAll(10, 1);
     }
 }

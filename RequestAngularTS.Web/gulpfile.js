@@ -133,7 +133,7 @@ var tsProjectMode = tsProject;
 
 function typescripts() {
     return gulp.src(['app/**/*.ts'])
-        .pipe(cached('typescripts'))
+        //.pipe(cached('typescripts'))
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())
@@ -157,7 +157,7 @@ gulp.task('typescripts', function () {
 function typescriptsmin() {
     // todo: spec.ts not being excluded from min
     return gulp.src(['app/**/*.ts', '!app/**/*.spec.ts', 'app/**/*.I.ts/'])
-        .pipe(cached('typescriptsmin'))
+        //.pipe(cached('typescriptsmin'))
         .pipe(plumber())
         .pipe(addsrc('typings/**/*.ts'))
         .pipe(sourcemaps.init())

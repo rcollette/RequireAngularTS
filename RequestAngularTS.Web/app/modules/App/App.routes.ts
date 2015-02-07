@@ -18,7 +18,7 @@
         return x;
     }
 
-    angular.module("app").config(["$routeProvider", function ($routeProvider: ng.route.IRouteProvider) {
+    angular.module("app").config(["$routeProvider", function ($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider) {
         $routeProvider
             .when("/PurchaseOrders",
             {
@@ -32,11 +32,11 @@
             .when("/PurhaseOrders/:id",
             {
                 routeName: "PurchaseOrder",
-                pathTitle: "Purchase Order {{:id}}",
-                controller: "PurchaseOrder",
+                pathTitle: "Purchase Order",
+                controller: "purchaseOrderController",
                 templateUrl: "modules/PurchaseOrder/PurchaseOrder.html",
                 controllerAs: "vm",
-                resolve: resolve(["modules/PurchaseOrder/PurchaseOrders.controller"])
+                resolve: resolve(["modules/PurchaseOrder/PurchaseOrder.controller"])
             })
             .when("/Vendors",
             {

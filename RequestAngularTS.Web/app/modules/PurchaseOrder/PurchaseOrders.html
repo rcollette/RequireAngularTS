@@ -1,4 +1,22 @@
 ﻿<div>
-    purchase orders<br />
-    {{vm.purchaseOrders}}
+    <p>{{vm.purchaseOrders}}</p>
+    <div>
+        totalRecords:{{vm.purchaseOrders.totalCount}}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>date</th>
+                    <th>description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="order in vm.purchaseOrders.items">
+                    <td data-ng-bind="order.id"></td>
+                    <td data-ng-bind="order.dateCreated"></td>
+                    <td data-ng-bind="order.description"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
