@@ -12,7 +12,8 @@
             moment: "components/moment/min/moment.min",
             appModule: "modules/App/App.module",
             appRoutes: "modules/App/App.routes",
-            appController: "modules/App/App.controller"
+            appController: "modules/App/App.controller",
+            text: "components/requirejs-text/text"
         },
         shim: {
             angular: { exports: "angular", deps: ["jquery"] },

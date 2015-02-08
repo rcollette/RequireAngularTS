@@ -60,7 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="app\directives\HtmlTemplate.directive.template.html" />
+    <Content Include="app\css\index.css" />
+    <Content Include="app\directives\HtmlTemplate\HtmlTemplate.directive.template.html" />
     <Content Include="app\lib\simplesidebar\index.html" />
     <Content Include="app\lib\simplesidebar\simple-sidebar.css" />
     <Content Include="app\modules\PurchaseOrder\PurchaseOrder.html" />
@@ -94,13 +95,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\css\" />
     <Folder Include="app\fonts\" />
     <Folder Include="app\images\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\directives\HtmlTemplate.directive.ts" />
-    <TypeScriptCompile Include="app\directives\test.ts" />
+    <TypeScriptCompile Include="app\directives\HtmlTemplate\HtmlTemplate.directive.ts" />
     <TypeScriptCompile Include="app\interfaces\PagebleT.I.ts" />
     <TypeScriptCompile Include="app\interfaces\FeatureController.I.ts" />
     <TypeScriptCompile Include="app\modules\App\App.module.ts" />

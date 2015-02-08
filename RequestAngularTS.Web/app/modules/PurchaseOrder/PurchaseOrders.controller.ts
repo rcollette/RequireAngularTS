@@ -1,4 +1,5 @@
-﻿import poService = require("../../dataAccessServices/PurchaseOrder.service");
+﻿///<amd-dependency path="directives/HtmlTemplate/HtmlTemplate.directive"/>
+import poService = require("dataAccessServices/PurchaseOrder.service");
 poService;
 class PurchaseOrdersController implements IFeatureController {
     public title: string = "Purchase Orders";
