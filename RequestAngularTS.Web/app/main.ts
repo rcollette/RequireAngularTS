@@ -25,12 +25,13 @@
             bootstrap: { deps: ["jquery"] },
             moment: { deps: ["jquery"] },
             appModule: { deps: ["angular", "angularRoutes", "angularAnimate"] },
-            appRoutes: { deps: ['appModule'] },
-            appController: { deps: ['appRoutes'] }
+            appRoutes: { deps: ["appModule"] },
+            appController: { deps: ["appRoutes"] }
         },
         priority: [
             "angular"
-        ]
+        ],
+        urlArgs: "v=1.0"
     });
 
     // angular must be first in this list.

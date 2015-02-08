@@ -13,7 +13,7 @@ gulp = require('gulp');
 gutil = require('gulp-util');
 concat = require('gulp-concat');
 uglify = require('gulp-uglify');
-sass = require('gulp-sass');
+//sass = require('gulp-sass');
 minifyCSS = require('gulp-minify-css');
 connect = require('gulp-connect');
 del = require('del');
@@ -23,7 +23,8 @@ sourcemaps = require('gulp-sourcemaps');
 ngAnnotate = require('gulp-ng-annotate');
 rename = require('gulp-rename');
 plumber = require('gulp-plumber');
-watch = require('gulp-watch');
+// note the somewhat odd requirement to pass the gulp module to gulp-chokidar
+watch = require('gulp-chokidar')(gulp);
 addsrc = require('gulp-add-src');
 cached = require('gulp-cached');
 gulpIgnore = require('gulp-ignore');
@@ -133,19 +134,19 @@ var tsProjectMode = tsProject;
 
 function typescripts() {
     return gulp.src(['app/**/*.ts'])
-        //.pipe(cached('typescripts'))
-        .pipe(plumber())
-        .pipe(addsrc('typings/**/*.ts'))
-        .pipe(sourcemaps.init())
-        .pipe(ts(tsProjectMode, undefined, ts.reporter.fullReporter(true))).js
-        .pipe(gulpIgnore.exclude('./*.I.ts'))
-        .pipe(ngAnnotate({
-            remove: false,
-            add: true,
-            gulpWarnings: false //typescript removes base path for some reason.  Warnings result that we don't want to see.
-        }))
-        .pipe(sourcemaps.write('.', { includeContent: false }))
-        .pipe(gulp.dest('app'));
+    //.pipe(cached('typescripts'))
+    .pipe(plumber())
+    .pipe(addsrc('typings/**/*.ts'))
+    .pipe(sourcemaps.init())
+    .pipe(ts(tsProjectMode, undefined, ts.reporter.fullReporter(true))).js
+    .pipe(gulpIgnore.exclude('./*.I.ts'))
+    .pipe(ngAnnotate({
+        remove: false,
+        add: true,
+        gulpWarnings: false //typescript removes base path for some reason.  Warnings result that we don't want to see.
+    }))
+    .pipe(sourcemaps.write('.', { includeContent: false }))
+    .pipe(gulp.dest('app'));
 }
 
 gulp.task('typescripts', function () {
@@ -209,15 +210,15 @@ gulp.task('clean', function () {
     del('dist');
 });
 
-gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts', 'styles'], function () {
+gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts'], function () {
     //a list of watchers, so it will watch all of the following files waiting for changes
 
-    // todo: for some reason watch is not picking up new or copy pasted files.  Is this a visual studio thing?
-    gulp.watch('app/**/*.ts', ['typescripts', 'typescripts-min']);
+    // todo: need to do .js file delete on .ts file delete.
+    watch('app/**/*.ts', { root: "app" }, ['typescripts', 'typescripts-min']);
     //gulp.watch('app/**/*.js', ['scripts']);
-    gulp.watch('app/scss/**', ['styles']);
+    //gulp.watch('app/scss/**', ['styles']);
     //gulp.watch('app/images/**', ['images']);
-    gulp.watch('app/*.html', ['html'])
+    watch('app/*.html', { root: "app" }, ['html'])
         .on('end', function () {
             gutil.log('Closing connect server.');
             connect.serverClose();

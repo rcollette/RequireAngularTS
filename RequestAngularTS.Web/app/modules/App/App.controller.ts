@@ -12,7 +12,8 @@ export class MainController implements IMasterController {
 
     constructor($route: ng.route.IRouteService) {
         this.$route = $route;
-        angular.forEach(this.$route.routes,(route, key) => {
+        angular.forEach(this.$route.routes,(route: any, key: any) => {
+            // todo: build navigation menu from route configuration
         });
     }
 
