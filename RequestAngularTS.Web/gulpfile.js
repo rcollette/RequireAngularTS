@@ -134,7 +134,7 @@ var tsProjectMode = tsProject;
 
 function typescripts() {
     return gulp.src(['app/**/*.ts'])
-    //.pipe(cached('typescripts'))
+    .pipe(cached('typescripts'))
     .pipe(plumber())
     .pipe(addsrc('typings/**/*.ts'))
     .pipe(sourcemaps.init())
@@ -214,7 +214,8 @@ gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts'], fun
     //a list of watchers, so it will watch all of the following files waiting for changes
 
     // todo: need to do .js file delete on .ts file delete.
-    watch('app/**/*.ts', { root: "app" }, ['typescripts', 'typescripts-min']);
+    watch('app/**/*.ts', { root: "app" }, ['typescripts', 'typescripts-min']).on('delete', function () {
+    });
     //gulp.watch('app/**/*.js', ['scripts']);
     //gulp.watch('app/scss/**', ['styles']);
     //gulp.watch('app/images/**', ['images']);

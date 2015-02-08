@@ -19,8 +19,8 @@ export class PurchaseOrdersService {
     }
 
     public fetchAll(count?: number, pageNumber?: number): IPurchaseOrderDtoPageable {
-        //We're doing get instead of query because we are returning the total page count in addition to the records
-        //so the response is considered a single object.
+        // we're doing get instead of query because we are returning the total page count in addition to the records
+        // so the response is considered a single object.
         return this._purchaseOrdersResource.get({ count, pageNumber });
     }
 

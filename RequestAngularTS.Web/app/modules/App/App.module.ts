@@ -22,8 +22,6 @@ app.config(function (
     // see: http://ify.io/lazy-loading-in-angularjs/
     // see: http://www.bennadel.com/blog/2553-Loading-AngularJS-Components-After-Your-Application-Has-Been-Bootstrapped.htm
 
-    // todo: We might want to keep a reference to the original properties we are assigning but so far, no need.
-
     app.controller = (name: string, controllerConstructor?: Function): ng.IModule=> {
         $controllerProvider.register(name, controllerConstructor);
         return (app);

@@ -47,8 +47,7 @@
                     controller: "vendorsController",
                     templateUrl: "modules/Vendor/Vendors.html",
                     controllerAs: "vm",
-                    resolve: resolve(["modules/Vendor/Vendors.controller"
-                    ])
+                    resolve: resolve(["modules/Vendor/Vendors.controller"])
                 })
                 .when("/Vendors/:id",
                 {

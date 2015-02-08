@@ -1,12 +1,24 @@
-﻿import poService = require("../../dataAccessServices/PurchaseOrder.service");
-poService;
+﻿import poService = require("dataAccessServices/PurchaseOrder.service");
+
+// we must declare the custom properties of $routeParams
+interface IPurchaseOrderRouteParams extends ng.route.IRouteService {
+    id: number;
+}
+
 class PurchaseOrderController implements IFeatureController {
     public title: string = "Purchase Order";
     public purchaseOrder: poService.IPurchaseOrderDto;
-    private purchaseOrderService: poService.PurchaseOrdersService;
 
-    constructor($scope: any, purchaseOrderService: poService.PurchaseOrdersService) {
-        this.purchaseOrder = purchaseOrderService.fetch(1);
+    constructor($scope: any, purchaseOrderService: poService.PurchaseOrdersService, $routeParams: IPurchaseOrderRouteParams) {
+        if (isNaN($routeParams.id)) {
+            throw "The id parameter is not a number";
+        }
+        var id: number = <number>$routeParams.id;
+        if (id < 1) {
+            throw "The id parameter must be greater than zero.";
+        }
+        this.purchaseOrder = purchaseOrderService.fetch(id);
     }
 }
+
 angular.module("app").controller("purchaseOrderController", PurchaseOrderController);

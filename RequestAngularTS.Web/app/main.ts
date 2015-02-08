@@ -46,7 +46,6 @@
         "bootstrap",
         "moment",
         "modules/PurchaseOrder/PurchaseOrder.module"
-        // todo add app controller"",
     ], function (angular: any) {
             $(document).ready(function () {
                 var $html = $("html");

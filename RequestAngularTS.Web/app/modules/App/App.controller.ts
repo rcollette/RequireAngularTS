@@ -4,7 +4,6 @@
 }
 
 export interface IMasterController {
-    toggleMainMenu(): void;
 }
 
 export class MainController implements IMasterController {
@@ -15,9 +14,6 @@ export class MainController implements IMasterController {
         angular.forEach(this.$route.routes,(route: any, key: any) => {
             // todo: build navigation menu from route configuration
         });
-    }
-
-    public toggleMainMenu() {
     }
 }
 
