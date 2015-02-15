@@ -2,7 +2,8 @@
     path: string;
     name: string;
     title: string;
-    navigationOrder?: number;
+    menuOrder?: number;
+    menuText?: string;
 }
 
 angular.module("app").config(
@@ -41,7 +42,8 @@ angular.module("app").config(
                 resolve: resolve(["modules/PurchaseOrder/PurchaseOrder.controller"])
             },
             {
-                navigationOrder: 10,
+                menuOrder: 10,
+                menuText: "Purchase Orders",
                 path: "/PurchaseOrders",
                 name: "PurchaseOrders",
                 title: "Purchase Orders",
@@ -53,7 +55,8 @@ angular.module("app").config(
                     "modules/PurchaseOrder/PurchaseOrders.controller"])
             },
             {
-                navigationOrder: 20,
+                menuOrder: 20,
+                menuText: "Vedors",
                 path: "/Vendors",
                 name: "Vendors",
                 title: "Vendors",

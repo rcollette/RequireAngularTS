@@ -1,18 +1,11 @@
-﻿export interface INavigationMenuItem {
-    name: string;
-    route: any;
-}
+﻿export class AppController {
+    public menuRoutes: IRouteDefinition[] = [];
 
-export interface IMasterController {
-}
-
-export class AppController implements IMasterController {
-    private $route: ng.route.IRouteService;
-
-    constructor($route: ng.route.IRouteService) {
-        this.$route = $route;
-        angular.forEach(this.$route.routes,(route: any, key: any) => {
-            // todo: build navigation menu from route configuration
+    constructor(private $route: ng.route.IRouteService) {
+        angular.forEach(this.$route.routes,(route: IRouteDefinition, key: any) => {
+            if (route.menuOrder) {
+                this.menuRoutes.push(route);
+            }
         });
     }
 }

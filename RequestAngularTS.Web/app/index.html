@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-ng-cloak="">
+<html lang="en" data-ng-cloak="" data-ng-controller="AppController as mainvm">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,11 +23,8 @@
                         Navigation
                     </a>
                 </li>
-                <li>
-                    <a href="PurchaseOrders">Purchase Orders</a>
-                </li>
-                <li>
-                    <a href="Vendors">Vendors</a>
+                <li data-ng-repeat="route in mainvm.menuRoutes|orderBy:navigationOrder">
+                    <a data-ng-href="{{route.path}}">{{route.menuText}}</a>
                 </li>
             </ul>
         </div>
