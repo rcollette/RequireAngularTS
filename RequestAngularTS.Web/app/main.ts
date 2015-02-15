@@ -48,7 +48,7 @@
     ], function (angular: any) {
             $(document).ready(function () {
                 var $html = $("html");
-                angular.bootstrap($html, ["app"], { "strictDi": false });
+                angular.bootstrap($html, ["app"], { "strictDi": true });
 
                 // more info: https://groups.google.com/forum/#!msg/angular/yslVnZh9Yjk/MLi3VGXZLeMJ
                 $html.addClass("ng-app");

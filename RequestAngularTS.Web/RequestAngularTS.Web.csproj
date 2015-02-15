@@ -74,7 +74,6 @@
     <Content Include="bower.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.js" />
     <Content Include="package.json" />
   </ItemGroup>
   <ItemGroup>
