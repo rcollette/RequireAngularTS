@@ -51,7 +51,6 @@ angular.module("app").config(
                 templateUrl: "modules/PurchaseOrder/PurchaseOrders.html",
                 controllerAs: "vm",
                 resolve: resolve([
-                    "directives/HtmlTemplate/HtmlTemplate.directive",
                     "modules/PurchaseOrder/PurchaseOrders.controller"])
             },
             {
@@ -63,7 +62,9 @@ angular.module("app").config(
                 controller: "VendorsController",
                 templateUrl: "modules/Vendor/Vendors.html",
                 controllerAs: "vm",
-                resolve: resolve(["modules/Vendor/Vendors.controller"])
+                resolve: resolve([
+                    "directives/HtmlTemplate/HtmlTemplate.directive",
+                    "modules/Vendor/Vendors.controller"])
             },
             {
                 path: "/Vendors/:id",
