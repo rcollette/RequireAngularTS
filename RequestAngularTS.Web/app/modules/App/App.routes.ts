@@ -28,21 +28,19 @@ angular.module("app").config(
             return x;
         }
 
-        $locationProvider.html5Mode(true);
-
         // by using a typed array, TypeScript helps us ensure that we are entering our route definitions correctly and consistently.
         var routeDefinitions: IRouteDefinition[] = [
             {
                 path: "/PurhaseOrders/:id",
                 name: "PurchaseOrder",
-                title: "Purchase Order",
+                title: "Purchase Order {{:id}}",
                 controller: "PurchaseOrderController",
                 templateUrl: "modules/PurchaseOrder/PurchaseOrder.html",
                 controllerAs: "vm",
                 resolve: resolve(["modules/PurchaseOrder/PurchaseOrder.controller"])
             },
             {
-                menuOrder: 10,
+                menuOrder: 30,
                 menuText: "Purchase Orders",
                 path: "/PurchaseOrders",
                 name: "PurchaseOrders",
@@ -55,7 +53,7 @@ angular.module("app").config(
             },
             {
                 menuOrder: 20,
-                menuText: "Vedors",
+                menuText: "Vendors",
                 path: "/Vendors",
                 name: "Vendors",
                 title: "Vendors",

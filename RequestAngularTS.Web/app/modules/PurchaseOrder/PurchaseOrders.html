@@ -12,7 +12,7 @@
             </thead>
             <tbody>
                 <tr data-ng-repeat="order in vm.purchaseOrders.items">
-                    <td><a data-ng-href="PurchaseOrders/{{order.id}}" data-ng-bind="order.id"></a></td>
+                    <td><a data-ng-href="#/PurchaseOrders/{{order.id}}" data-ng-bind="order.id"></a></td>
                     <td data-ng-bind="order.dateCreated"></td>
                     <td data-ng-bind="order.description"></td>
                 </tr>

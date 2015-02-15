@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="/" />
 
     <title>{{mainvm.$route.current.title}}</title>
     <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -24,7 +23,7 @@
                     </a>
                 </li>
                 <li data-ng-repeat="route in mainvm.menuRoutes|orderBy:navigationOrder">
-                    <a data-ng-href="{{route.path}}">{{route.menuText}}</a>
+                    <a data-ng-href="#{{route.path}}">{{route.menuText}}</a>
                 </li>
             </ul>
         </div>
