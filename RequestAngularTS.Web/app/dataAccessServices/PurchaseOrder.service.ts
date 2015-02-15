@@ -15,6 +15,7 @@ export class PurchaseOrdersService {
         // todo: The service base would be set from a global configuration/service/singleton normally.
         this._serviceBase = "http://private-a994d-testapi780.apiary-mock.com/";
         var serviceTemplate: string = this._serviceBase + "PurchaseOrders/:purchaseOrderId";
+        // @id property mapping is from POSTED data only!
         this._purchaseOrdersResource = this.$resource<any>(serviceTemplate, { purchaseOrderId: "@id" });
     }
 
@@ -25,7 +26,7 @@ export class PurchaseOrdersService {
     }
 
     public fetch(id: number): IPurchaseOrder {
-        return this._purchaseOrdersResource.get({ id: id });
+        return this._purchaseOrdersResource.get({ "purchaseOrderId": id });
     }
 }
 angular.module("app").service("purchaseOrderService", PurchaseOrdersService);
