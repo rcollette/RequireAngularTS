@@ -90,12 +90,15 @@ angular.module("app").run(($rootScope: ng.IRootScopeService, $route: ng.route.IR
     // provide a globally accessible function for building paths to to routes by routeName
     $rootScope["routePath"] = function (routeName: string, parameters: { [index: string]: any }) {
         // iterate over all available routes
-        for (var path in $route.routes) {
-            var currentRouteName = (<ng.route.IRoute>$route.routes[path]).name;
-            if (currentRouteName === routeName) {
-                var result = path;
+        var routes = $route.routes;
+        for (var i = 0; i < routes.length; i++) {
+            var route = <IRouteDefinition>routes[i];
+            if (routeName === route.name) {
+                var result = route.path;
                 for (var parameterName in parameters) {
-                    result = result.replace(":" + parameterName, parameters[parameterName]);
+                    if (parameters.hasOwnProperty(parameterName)) {
+                        result = result.replace(":" + parameterName, parameters[parameterName]);
+                    }
                 }
                 return result;
             }
