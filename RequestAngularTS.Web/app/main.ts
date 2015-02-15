@@ -1,10 +1,10 @@
 ﻿(function () {
     require.config({
         paths: {
-            angular: "components/angular/angular",
-            angularRoute: "components/angular-route/angular-route",
+            angular: "components/angular/angular.min",
+            angularRoute: "components/angular-route/angular-route.min",
             angularAnimate: "components/angular-animate/angular-animate.min",
-            angularResource: "components/angular-resource/angular-resource",
+            angularResource: "components/angular-resource/angular-resource.min",
             jquery: "components/jquery/dist/jquery.min",
             bootstrap: "components/bootstrap/dist/js/bootstrap.min",
             angularToastr: "components/angular-toastr/dist/angular-toastr.min",

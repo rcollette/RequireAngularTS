@@ -82,9 +82,9 @@ angular.module("app").config(
             $routeProvider.when(routeDefinition.path, routeDefinition);
         }
 
-        //$routeProvider.otherwise({
-        //    redirectTo: "/PurchaseOrders"
-        //});
+        $routeProvider.otherwise({
+            redirectTo: "/PurchaseOrders"
+        });
     }
     );
 
