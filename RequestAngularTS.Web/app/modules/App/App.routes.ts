@@ -31,7 +31,7 @@ angular.module("app").config(
         // by using a typed array, TypeScript helps us ensure that we are entering our route definitions correctly and consistently.
         var routeDefinitions: IRouteDefinition[] = [
             {
-                path: "/PurhaseOrders/:id",
+                path: "/PurchaseOrders/:id",
                 name: "PurchaseOrder",
                 title: "Purchase Order {{:id}}",
                 controller: "PurchaseOrderController",
@@ -82,14 +82,14 @@ angular.module("app").config(
             $routeProvider.when(routeDefinition.path, routeDefinition);
         }
 
-        $routeProvider.otherwise({
-            redirectTo: "/PurchaseOrders"
-        });
+        //$routeProvider.otherwise({
+        //    redirectTo: "/PurchaseOrders"
+        //});
     }
     );
 
 angular.module("app").run(($rootScope: ng.IRootScopeService, $route: ng.route.IRouteService) => {
-    // provide a globally accessible function for building paths to to routes by routeName
+    // provide a globally accessible function for building paths to routes by routeName
     $rootScope["routePath"] = function (routeName: string, parameters: { [index: string]: any }) {
         // iterate over all available routes
         var routes = $route.routes;
