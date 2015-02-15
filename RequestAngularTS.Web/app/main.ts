@@ -1,9 +1,8 @@
-﻿/// <reference path="../typings/tsd.d.ts" />
-(function () {
+﻿(function () {
     require.config({
         paths: {
             angular: "components/angular/angular",
-            angularRoutes: "components/angular-route/angular-route",
+            angularRoute: "components/angular-route/angular-route",
             angularAnimate: "components/angular-animate/angular-animate.min",
             angularResource: "components/angular-resource/angular-resource.min",
             jquery: "components/jquery/dist/jquery.min",
@@ -17,7 +16,7 @@
         },
         shim: {
             angular: { exports: "angular", deps: ["jquery"] },
-            angularRoutes: { deps: ["angular"] },
+            angularRoute: { deps: ["angular"] },
             angularAnimate: { deps: ["angular"] },
             angularResource: { deps: ["angular"] },
             angularTouch: { deps: ["angular"] },
@@ -25,7 +24,7 @@
             angularToastr: { deps: ["angular", "angularAnimate", "jquery"] },
             bootstrap: { deps: ["jquery"] },
             moment: { deps: ["jquery"] },
-            appModule: { deps: ["angular", "angularRoutes", "angularAnimate"] },
+            appModule: { deps: ["angular", "angularRoute", "angularAnimate"] },
             appRoutes: { deps: ["appModule"] },
             appController: { deps: ["appRoutes"] }
         },
@@ -38,7 +37,7 @@
     // angular must be first in this list.
     require([
         "angular",
-        "angularRoutes",
+        "angularRoute",
         "angularAnimate",
         "angularResource",
         "appController",

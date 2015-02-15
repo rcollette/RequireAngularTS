@@ -34,17 +34,19 @@
                 {
                     routeName: "PurchaseOrders",
                     pathTitle: "Purchase Orders",
-                    controller: "purchaseOrdersController",
+                    controller: "PurchaseOrdersController",
                     templateUrl: "modules/PurchaseOrder/PurchaseOrders.html",
                     controllerAs: "vm",
-                    resolve: resolve(["modules/PurchaseOrder/PurchaseOrders.controller"])
+                    resolve: resolve([
+                        "directives/HtmlTemplate/HtmlTemplate.directive",
+                        "modules/PurchaseOrder/PurchaseOrders.controller"])
                     // return a promise that loads the controller using requirejs
                 })
                 .when("/Vendors",
                 {
                     routeName: "Vendors",
                     pathTitle: "Vendors",
-                    controller: "vendorsController",
+                    controller: "VendorsController",
                     templateUrl: "modules/Vendor/Vendors.html",
                     controllerAs: "vm",
                     resolve: resolve(["modules/Vendor/Vendors.controller"])

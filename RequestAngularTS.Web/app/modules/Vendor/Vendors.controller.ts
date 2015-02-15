@@ -4,4 +4,4 @@
     constructor($scope: any) {
     }
 }
-angular.module("app").controller("vendorsController", VendorsController); 
+angular.module("app").controller("VendorsController", VendorsController); 

@@ -1,10 +1,10 @@
-﻿export interface IPurchaseOrderDto {
+﻿export interface IPurchaseOrder {
     id: number;
     dateCreated: Date;
     description: string;
 }
 
-export interface IPurchaseOrderDtoPageable extends IPageable<IPurchaseOrderDto> {
+export interface IPurchaseOrderPageable extends IPageable<IPurchaseOrder> {
 }
 
 export class PurchaseOrdersService {
@@ -18,13 +18,13 @@ export class PurchaseOrdersService {
         this._purchaseOrdersResource = this.$resource<any>(serviceTemplate, { purchaseOrderId: "@id" });
     }
 
-    public fetchAll(count?: number, pageNumber?: number): IPurchaseOrderDtoPageable {
+    public fetchAll(count?: number, pageNumber?: number): IPurchaseOrderPageable {
         // we're doing get instead of query because we are returning the total page count in addition to the records
         // so the response is considered a single object.
         return this._purchaseOrdersResource.get({ count, pageNumber });
     }
 
-    public fetch(id: number): IPurchaseOrderDto {
+    public fetch(id: number): IPurchaseOrder {
         return this._purchaseOrdersResource.get({ id: id });
     }
 }

@@ -1,4 +1,4 @@
-﻿class HtmlTemplateDirective implements ng.IDirective {
+﻿export class HtmlTemplateDirective implements ng.IDirective {
     public restrict: string = "A";
     public transclude: boolean = true;
     public scope = { value: "@", cssclass: "@" };

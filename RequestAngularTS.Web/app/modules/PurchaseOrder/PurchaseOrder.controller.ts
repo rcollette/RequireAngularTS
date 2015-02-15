@@ -7,7 +7,7 @@ interface IPurchaseOrderRouteParams extends ng.route.IRouteService {
 
 class PurchaseOrderController implements IFeatureController {
     public title: string = "Purchase Order";
-    public purchaseOrder: poService.IPurchaseOrderDto;
+    public purchaseOrder: poService.IPurchaseOrder;
 
     constructor($scope: any, purchaseOrderService: poService.PurchaseOrdersService, $routeParams: IPurchaseOrderRouteParams) {
         if (isNaN($routeParams.id)) {

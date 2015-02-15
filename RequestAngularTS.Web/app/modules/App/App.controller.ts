@@ -6,7 +6,7 @@
 export interface IMasterController {
 }
 
-export class MainController implements IMasterController {
+export class AppController implements IMasterController {
     private $route: ng.route.IRouteService;
 
     constructor($route: ng.route.IRouteService) {
@@ -17,4 +17,4 @@ export class MainController implements IMasterController {
     }
 }
 
-angular.module("app").controller("mainController", MainController);
+angular.module("app").controller("AppController", AppController);

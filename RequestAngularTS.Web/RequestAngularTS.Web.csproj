@@ -99,6 +99,7 @@
     <Folder Include="app\images\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\directives\ModelValidatorDirective.ts" />
     <TypeScriptCompile Include="app\directives\HtmlTemplate\HtmlTemplate.directive.ts" />
     <TypeScriptCompile Include="app\interfaces\PagebleT.I.ts" />
     <TypeScriptCompile Include="app\interfaces\FeatureController.I.ts" />

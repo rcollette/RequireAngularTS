@@ -30,7 +30,6 @@ cached = require('gulp-cached');
 gulpIgnore = require('gulp-ignore');
 
 gulp.task('connect', function () {
-    return;
     connect.server({
         root: 'app',
         livereload: true
