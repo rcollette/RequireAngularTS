@@ -1,3 +1,4 @@
+/// <vs SolutionOpened='default' />
 //initialize all of our variables
 var concat,
     gulp, gutil,

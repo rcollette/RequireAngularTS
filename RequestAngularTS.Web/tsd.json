@@ -32,9 +32,6 @@
     "angularjs/angular-sanitize.d.ts": {
       "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
     },
-    "angularjs/legacy/angular-scenario-1.2.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
-    },
     "angularjs/angular-route.d.ts": {
       "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
     }
