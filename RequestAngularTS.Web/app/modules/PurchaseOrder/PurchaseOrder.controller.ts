@@ -1,4 +1,4 @@
-﻿import poService = require("dataAccessServices/PurchaseOrder.service");
+﻿import poService = require("modules/PurchaseOrder/PurchaseOrder.service");
 poService;
 // we must declare the custom properties of $routeParams
 interface IPurchaseOrderRouteParams extends ng.route.IRouteParamsService {
