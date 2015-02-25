@@ -6,28 +6,15 @@
     menuText?: string;
 }
 
-angular.module("app").config(
-    function ($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider) {
-        function resolve(modules: string[]) {
-            var result: any = { deps: deferredController(modules) };
-            return result;
-        }
+module app.routing {
+    angular.module("app").config(config);
 
-        function deferredController(modules: string[]) {
-            /*@ngInject*/
-            var x = function ($q: ng.IQService, $rootScope: ng.IRootScopeService) {
-                var deferred = $q.defer();
-                require(modules, function () {
-                    // all dependencies have been resolved so resolve the promise.
-                    $rootScope.$apply(function () {
-                        deferred.resolve();
-                    });
-                });
-                return deferred.promise;
-            };
-            return x;
-        }
+    function config($routeProvider: ng.route.IRouteProvider, routeResolverProvider: blocks.router.RouteResolverProvider) {
+        // routeResolverProvider is a provider rather than a service at this point because we cannot get
+        // service instances during module configuration.
 
+        // Create a shortcut to the method we're going to call repeatedly.
+        var resolve = routeResolverProvider.resolve;
         // by using a typed array, TypeScript helps us ensure that we are entering our route definitions correctly and consistently.
         var routeDefinitions: IRouteDefinition[] = [
             {
@@ -37,6 +24,9 @@ angular.module("app").config(
                 controller: "PurchaseOrderController",
                 templateUrl: "modules/PurchaseOrder/PurchaseOrder.html",
                 controllerAs: "vm",
+                // resolve the AMD module as though we were using the requireJs require() function.
+                // this can be a path relative to the requireJs base path without the file extension,
+                // or it can be a named path as set in require.config()
                 resolve: resolve(["modules/PurchaseOrder/PurchaseOrder.controller"])
             },
             {
@@ -72,7 +62,6 @@ angular.module("app").config(
                 templateUrl: "modules/Vendor/Vendor.html",
                 controllerAs: "vm",
                 resolve: resolve(["modules/Vendor/Vendors.controller"])
-                // note that this is the file name without the .js extension relative to the app folder
             }
 
         ];
@@ -86,26 +75,28 @@ angular.module("app").config(
             redirectTo: "/PurchaseOrders"
         });
     }
-    );
 
-angular.module("app").run(($rootScope: ng.IRootScopeService, $route: ng.route.IRouteService) => {
-    // provide a globally accessible function for building paths to routes by routeName
-    $rootScope["routePath"] = function (routeName: string, parameters: { [index: string]: any }) {
-        // iterate over all available routes
-        var routes = $route.routes;
-        for (var i = 0; i < routes.length; i++) {
-            var route = <IRouteDefinition>routes[i];
-            if (routeName === route.name) {
-                var result = route.path;
-                for (var parameterName in parameters) {
-                    if (parameters.hasOwnProperty(parameterName)) {
-                        result = result.replace(":" + parameterName, parameters[parameterName]);
+    angular.module("app").run(run);
+
+    function run($rootScope: ng.IRootScopeService, $route: ng.route.IRouteService) {
+        // provide a globally accessible function for building paths to routes by routeName
+        $rootScope["routePath"] = function (routeName: string, parameters: { [index: string]: any }) {
+            // iterate over all available routes
+            var routes = $route.routes;
+            for (var i = 0; i < routes.length; i++) {
+                var route = <IRouteDefinition>routes[i];
+                if (routeName === route.name) {
+                    var result = route.path;
+                    for (var parameterName in parameters) {
+                        if (parameters.hasOwnProperty(parameterName)) {
+                            result = result.replace(":" + parameterName, parameters[parameterName]);
+                        }
                     }
+                    return result;
                 }
-                return result;
             }
-        }
 
-        throw "Undefined route name: " + routeName;
-    };
-});
+            throw "Undefined route name: " + routeName;
+        };
+    }
+} 

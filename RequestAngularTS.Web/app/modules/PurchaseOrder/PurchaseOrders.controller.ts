@@ -18,4 +18,5 @@ class PurchaseOrdersController implements IFeatureController {
     }
 }
 
+// todo: need to controller in its own feature module
 angular.module("app").controller("PurchaseOrdersController", PurchaseOrdersController);
