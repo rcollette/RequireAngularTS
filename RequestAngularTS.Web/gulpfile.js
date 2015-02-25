@@ -68,7 +68,7 @@ gulp.task('styles', function () {
                //the final filename of our combined css file
                .pipe(concat('styles.css'))
                //where to save our final, compressed css file
-               .pipe(gulp.dest('app/css'))
+               .pipe(gulp.dest('app/css'));
     //notify LiveReload to refresh
     //.pipe(connect.reload());
 });
