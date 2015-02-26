@@ -100,15 +100,17 @@
     <Folder Include="app\images\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\blocks\router\blocks.router.module.ts" />
+    <TypeScriptCompile Include="app\blocks\router\RouteResolver.provider.ts" />
     <TypeScriptCompile Include="app\directives\ModelValidatorDirective.ts" />
     <TypeScriptCompile Include="app\directives\HtmlTemplate\HtmlTemplate.directive.ts" />
     <TypeScriptCompile Include="app\interfaces\PagebleT.I.ts" />
     <TypeScriptCompile Include="app\interfaces\FeatureController.I.ts" />
     <TypeScriptCompile Include="app\modules\App\App.module.ts" />
     <TypeScriptCompile Include="app\modules\App\App.routes.ts" />
-    <TypeScriptCompile Include="app\dataAccessServices\PurchaseOrder.service.ts" />
     <TypeScriptCompile Include="app\modules\App\App.controller.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\modules\Core\App.Core.module.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.module.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.controller.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrders.controller.ts" />

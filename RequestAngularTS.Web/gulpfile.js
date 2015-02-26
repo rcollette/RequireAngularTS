@@ -207,7 +207,11 @@ gulp.task('html-deploy', function () {
 
 //cleans our dist directory in case things got deleted
 gulp.task('clean', function () {
-    del('dist');
+    del(['app/**/*.{js,map}',        
+        '!app/components/**',
+        '!app/lib/**'], function (err,paths) {
+            console.log('Deleted files/folders:\n', paths.join('\n'));
+        });
 });
 
 gulp.task('watch', ['connect', 'typescripts', 'typescripts-min', 'scripts'], function () {
