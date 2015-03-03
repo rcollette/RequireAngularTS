@@ -6,5 +6,6 @@ angular.module("app.core", [
     "ngAnimate",
     "ngResource",
     "toastr",
-    "blocks.router"
+    "block.router",
+    "block.validation"
 ]);

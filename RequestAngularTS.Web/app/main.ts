@@ -2,8 +2,8 @@
     require.config({
         paths: {
             // third party libraries
-            angular: "components/angular/angular.min",
-            angularRoute: "components/angular-route/angular-route.min",
+            angular: "components/angular/angular",
+            angularRoute: "components/angular-route/angular-route",
             angularAnimate: "components/angular-animate/angular-animate.min",
             angularResource: "components/angular-resource/angular-resource",
             jquery: "components/jquery/dist/jquery.min",
@@ -13,8 +13,10 @@
             text: "components/requirejs-text/text",
 
             // block modules
-            blockRouterModule: "blocks/router/blocks.router.module",
+            blockRouterModule: "blocks/router/block.router.module",
             routeResolver: "blocks/router/RouteResolver.provider",
+            blockValidationModule: "blocks/validation/block.validation.module",
+            serverErrorDirective: "blocks/validation/ServerErrorDirective",
 
             // services
 
@@ -46,7 +48,8 @@
                     "moment",
                     "angularToastr",
                     "blockRouterModule",
-                    "routeResolver"]
+                    "routeResolver",
+                    "serverErrorDirective"]
             },
             //The appModule defines the feature module dependencies for the application
             appModule: {

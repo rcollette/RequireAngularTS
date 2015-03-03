@@ -9,7 +9,7 @@
 module app.routing {
     angular.module("app").config(config);
 
-    function config($routeProvider: ng.route.IRouteProvider, routeResolverProvider: blocks.router.RouteResolverProvider) {
+    function config($routeProvider: ng.route.IRouteProvider, routeResolverProvider: block.router.RouteResolverProvider) {
         // routeResolverProvider is a provider rather than a service at this point because we cannot get
         // service instances during module configuration.
 

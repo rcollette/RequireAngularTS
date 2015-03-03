@@ -4,7 +4,6 @@
 // it seems the app module must be exported so that the properties we are using to capture do not "go away"
 var app: any = angular.module("app", [
     "app.core",
-    "blocks.router",
     "app.purchaseOrder"]);
 
 // for some reason, we need to hold onto an instance of the injector associated
