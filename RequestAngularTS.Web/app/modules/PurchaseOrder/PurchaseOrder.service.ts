@@ -1,10 +1,4 @@
-﻿export interface IPurchaseOrder {
-    id: number;
-    dateCreated: Date;
-    description: string;
-}
-
-export interface IPurchaseOrderPageable extends IPageable<IPurchaseOrder> {
+﻿export interface IPurchaseOrderPageable extends IPageable<IPurchaseOrder> {
 }
 
 export class PurchaseOrdersService {
@@ -25,8 +19,11 @@ export class PurchaseOrdersService {
         return this._purchaseOrdersResource.get({ count, pageNumber });
     }
 
-    public fetch(id: number): IPurchaseOrder {
-        return this._purchaseOrdersResource.get({ "purchaseOrderId": id });
+    public fetch(id: number): ng.IPromise<IPurchaseOrder> {
+        return this._purchaseOrdersResource.get({ "purchaseOrderId": id }).then(function (data: any) {
+            data.dateCreated = new Date(data.dateCreated);
+            return <ng.IPromise<IPurchaseOrder>>data;
+        });
     }
 }
 angular.module("app").service("purchaseOrderService", PurchaseOrdersService); 

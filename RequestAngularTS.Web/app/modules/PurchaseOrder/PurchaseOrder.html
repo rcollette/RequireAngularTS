@@ -1,6 +1,10 @@
 ﻿<div>
     <h1>Purchase Order</h1>
     {{vm.purchaseOrder}}
-    <form data-model-state-configuration="{messageTemplate:'<div class=&quot;input-error&quot;></div>'}">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="dateCreated">Name</label>
+            <input type="date" form-control" data-ng-model="vm.purchaseOrder.dateCreated">
+        </div>
     </form>
 </div>

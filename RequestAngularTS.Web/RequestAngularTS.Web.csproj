@@ -114,6 +114,7 @@
     <TypeScriptCompile Include="app\modules\Core\App.Core.module.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.module.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.controller.ts" />
+    <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrder.service.ts" />
     <TypeScriptCompile Include="app\modules\PurchaseOrder\PurchaseOrders.controller.ts" />
     <TypeScriptCompile Include="app\modules\Vendor\Vendor.module.ts" />
     <TypeScriptCompile Include="app\modules\Vendor\Vendors.controller.ts" />

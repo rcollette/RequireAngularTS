@@ -71,6 +71,7 @@ module app.routing {
             $routeProvider.when(routeDefinition.path, routeDefinition);
         }
 
+
         $routeProvider.otherwise({
             redirectTo: "/PurchaseOrders"
         });
